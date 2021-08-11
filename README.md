@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nicko170/php-snmp.svg?style=flat-square)](https://packagist.org/packages/nicko170/php-snmp)
 [![Total Downloads](https://img.shields.io/packagist/dt/nicko170/php-snmp.svg?style=flat-square)](https://packagist.org/packages/nicko170/php-snmp)
-![GitHub Actions](https://github.com/nicko170/php-snmp/actions/workflows/main.yml/badge.svg)
+[![StyleCI](https://github.styleci.io/repos/395032878/shield?branch=main)](https://github.styleci.io/repos/395032878?branch=main)
 
 
 
