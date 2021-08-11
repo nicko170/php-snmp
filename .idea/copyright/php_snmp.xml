@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
   <copyright>
     <option name="keyword" value="@licence" />
-    <option name="notice" value="PHP SNMP - A fluent interface to SNMP network devices&#10;&#10;@link      https://github.com/nicko170/php-snmp&#10;@author    Nick Pratley &lt;nick@npratley.net&gt;&#10;@licence   https://github.com/nicko170/php-snmp/blob/master/LICENSE.md&#10;@copyright Copyright (c) 2021 - &amp;#36;today.year Nick Pratley - (https://devlan.io)&#10; " />
+    <option name="notice" value="PHP SNMP - A fluent interface to SNMP network devices&#10;&#10;@link      https://github.com/nicko170/php-snmp&#10;@author    Nick Pratley &lt;nick@npratley.net&gt;&#10;@licence   https://github.com/nicko170/php-snmp/blob/main/LICENSE.md&#10;@copyright Copyright (c) 2021 - &amp;#36;today.year Nick Pratley - (https://devlan.io)&#10; " />
     <option name="myName" value="php-snmp" />
   </copyright>
 </component>
