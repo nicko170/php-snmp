@@ -1,3 +1,2 @@
-php:
-  version: 8
-  preset: laravel
+version: 8
+preset: laravel
