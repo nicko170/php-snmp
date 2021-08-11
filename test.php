@@ -7,7 +7,6 @@
  * @licence   https://github.com/nicko170/php-snmp/blob/main/LICENSE.md
  * @copyright Copyright (c) 2021 - 2021 Nick Pratley - (https://devlan.io)
  */
-
 require 'vendor/autoload.php';
 
 use Nicko170\PhpSnmp\SNMP;

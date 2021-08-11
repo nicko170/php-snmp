@@ -12,12 +12,12 @@ namespace Nicko170\PhpSnmp\MIBS;
 
 use Nicko170\PhpSnmp\SNMP;
 
-abstract class Base {
+abstract class Base
+{
     protected SNMP $snmp;
 
     public function __construct(SNMP $snmp)
     {
         $this->snmp = $snmp;
     }
-
 }

@@ -39,7 +39,7 @@ interface SNMPCache
     public function get($key): mixed;
 
     /**
-     * Deletes an item from the cache
+     * Deletes an item from the cache.
      *
      * @param $key
      * @return bool
@@ -47,7 +47,7 @@ interface SNMPCache
     public function delete($key): bool;
 
     /**
-     * Deletes all entries from the cache
+     * Deletes all entries from the cache.
      *
      * @return bool
      */
