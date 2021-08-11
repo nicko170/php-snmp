@@ -28,7 +28,7 @@ class SNMP
     protected SNMPCache $cache;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $host The target host IP address
      * @param string $community The SNMP community
@@ -38,7 +38,7 @@ class SNMP
      */
     public function __construct(string $host = '127.0.0.1', string $community = 'public', string $version = '2c', int $retry = 5, SNMPCache $cache = null)
     {
-        if (!function_exists('snmp2_get')) {
+        if (! function_exists('snmp2_get')) {
             throw new Exception('You need to install the PHP SNMP package.');
         }
 
@@ -77,13 +77,13 @@ class SNMP
     /**
      * Parses the return value from the SNMP query.
      * eg, [STRING: "ASDF"] => string "ASDF";
-     * or, [INTEGER: 11] => int 11;
+     * or, [INTEGER: 11] => int 11;.
      *
      * @param string $result
      * @return string|int|bool|null
      * @throws Exception
      */
-    public function parse(string $result): string|int|bool|null
+    public function parse(string $result): string | int | bool | null
     {
         if (empty($result)) {
             return '';
@@ -94,8 +94,8 @@ class SNMP
 
         return match ($type) {
             'STRING', 'OID', 'IpAddress' => $value,
-            'INTEGER' => is_numeric($value) ? (int)$value : null,
-            'Timeticks' => (int)substr($value, 1, strrpos($value, ')') - 1),
+            'INTEGER' => is_numeric($value) ? (int) $value : null,
+            'Timeticks' => (int) substr($value, 1, strrpos($value, ')') - 1),
             'Counter32', 'Counter64', 'Gauge32' => (int) $value,
             default => throw new Exception("Not implemented: [$type: $value]")
         };

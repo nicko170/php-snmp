@@ -30,27 +30,27 @@ class System extends Base
         return $this->snmp->get(self::SYSTEM_OBJECT_ID);
     }
 
-    public function uptime() : mixed
+    public function uptime(): mixed
     {
         return $this->snmp->get(self::SYSTEM_UPTIME);
     }
 
-    public function contact() : mixed
+    public function contact(): mixed
     {
         return $this->snmp->get(self::SYSTEM_CONTACT);
     }
 
-    public function name() : mixed
+    public function name(): mixed
     {
         return $this->snmp->get(self::SYSTEM_NAME);
     }
 
-    public function location() : mixed
+    public function location(): mixed
     {
         return $this->snmp->get(self::SYSTEM_LOCATION);
     }
 
-    public function services() : mixed
+    public function services(): mixed
     {
         return $this->snmp->get(self::SYSTEM_SERVICES);
     }

@@ -10,12 +10,13 @@
 
 namespace Nicko170\PhpSnmp\MIBS;
 
-trait HasMIBS {
+trait HasMIBS
+{
     protected array $mibs = [];
 
-    public function system() : System
+    public function system(): System
     {
-        if(array_key_exists('system', $this->mibs) && $this->mibs['system'] instanceof System){
+        if (array_key_exists('system', $this->mibs) && $this->mibs['system'] instanceof System) {
             return $this->mibs['system'];
         }
 

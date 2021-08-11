@@ -10,10 +10,8 @@
 
 namespace Nicko170\PhpSnmp;
 
-use Nicko170\PhpSnmp\Contracts\SNMPCache;
 use Carbon\Carbon;
-use Nicko170\PhpSnmp\Exceptions\CacheItemExpired;
-use Nicko170\PhpSnmp\Exceptions\NotFoundException;
+use Nicko170\PhpSnmp\Contracts\SNMPCache;
 
 class SimpleCache implements SNMPCache
 {
@@ -31,7 +29,7 @@ class SimpleCache implements SNMPCache
 
     public function get($key): mixed
     {
-        if (!array_key_exists($key, $this->_cache)) {
+        if (! array_key_exists($key, $this->_cache)) {
             return false;
         }
 
@@ -41,6 +39,7 @@ class SimpleCache implements SNMPCache
         // If the cache is expired
         if ($timeout && $timeout->isPast()) {
             $this->delete($key);
+
             return false;
         }
 
@@ -51,6 +50,7 @@ class SimpleCache implements SNMPCache
     {
         if (array_key_exists($key, $this->_cache)) {
             unset($this->_cache[$key]);
+
             return true;
         }
 
@@ -60,12 +60,13 @@ class SimpleCache implements SNMPCache
     public function reset(): bool
     {
         $this->_cache = [];
+
         return true;
     }
 
     public function exists(string $key): bool
     {
-        if (!array_key_exists($key, $this->_cache)) {
+        if (! array_key_exists($key, $this->_cache)) {
             return false;
         }
 
@@ -75,6 +76,7 @@ class SimpleCache implements SNMPCache
         // If the cache is expired we may as well delete the item here, save another lookup / call
         if ($timeout && $timeout->isPast()) {
             $this->delete($key);
+
             return false;
         }
 
