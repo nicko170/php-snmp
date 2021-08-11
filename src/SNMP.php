@@ -106,13 +106,13 @@ class SNMP
     /**
      * @throws Exception
      */
-    public function device() : DeviceContract
+    public function device(): DeviceContract
     {
         // Return a new Device Class
-        if(str_starts_with($this->system()->description(), 'ExtremeXOS')) {
+        if (str_starts_with($this->system()->description(), 'ExtremeXOS')) {
             return new ExtremeNetworks($this);
         }
 
-        throw new Exception("Vendor not implimented");
+        throw new Exception('Vendor not implimented');
     }
 }
