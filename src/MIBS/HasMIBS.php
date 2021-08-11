@@ -10,6 +10,8 @@
 
 namespace Nicko170\PhpSnmp\MIBS;
 
+use Nicko170\PhpSnmp\MIBS\ExtremeXOS\ExtremeXOS;
+
 trait HasMIBS
 {
     protected array $mibs = [];
@@ -21,5 +23,14 @@ trait HasMIBS
         }
 
         return $this->mibs['system'] = new System($this);
+    }
+
+    public function extremeXOS(): ExtremeXOS
+    {
+        if (array_key_exists('extremeXOS', $this->mibs) && $this->mibs['extremeXOS'] instanceof ExtremeXOS) {
+            return $this->mibs['extremeXOS'];
+        }
+
+        return $this->mibs['extremeXOS'] = new ExtremeXOS($this);
     }
 }

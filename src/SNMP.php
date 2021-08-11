@@ -11,7 +11,9 @@
 namespace Nicko170\PhpSnmp;
 
 use Exception;
+use Nicko170\PhpSnmp\Contracts\DeviceContract;
 use Nicko170\PhpSnmp\Contracts\SNMPCache;
+use Nicko170\PhpSnmp\Device\ExtremeNetworks;
 use Nicko170\PhpSnmp\MIBS\HasMIBS;
 
 class SNMP
@@ -99,5 +101,18 @@ class SNMP
             'Counter32', 'Counter64', 'Gauge32' => (int) $value,
             default => throw new Exception("Not implemented: [$type: $value]")
         };
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function device() : DeviceContract
+    {
+        // Return a new Device Class
+        if(str_starts_with($this->system()->description(), 'ExtremeXOS')) {
+            return new ExtremeNetworks($this);
+        }
+
+        throw new Exception("Vendor not implimented");
     }
 }
