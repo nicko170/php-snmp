@@ -16,7 +16,7 @@ class ExtremeXOS extends Base
 {
     protected array $mibs = [];
 
-    public function chassis() : Chassis
+    public function chassis(): Chassis
     {
         if (array_key_exists('chassis', $this->mibs) && $this->mibs['chassis'] instanceof Chassis) {
             return $this->mibs['chassis'];

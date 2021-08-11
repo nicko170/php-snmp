@@ -23,28 +23,27 @@ class ExtremeNetworks extends Device implements DeviceContract
     public ?Carbon $os_date;
     public string $model;
 
+    #[Pure]
+ public function __construct()
+ {
+     parent::__construct(...func_get_args());
 
-    #[Pure] public function __construct()
-    {
-        parent::__construct(...func_get_args());
+     $this->vendor = 'Extreme Networks';
+     $this->os = 'ExtremeXOS';
+     $this->parse();
+ }
 
-        $this->vendor = 'Extreme Networks';
-        $this->os = 'ExtremeXOS';
-        $this->parse();
-    }
-
-    function parse(): void
+    public function parse(): void
     {
         $this->serial_number = $this->snmp->extremeXOS()->chassis()->systemId();
         if (str_starts_with($this->snmp->system()->description(), 'ExtremeXOS (')) {
-            preg_match( '/ExtremeXOS\s\((.+)\)\sversion\s([a-zA-Z0-9\.\-]+\s[a-zA-Z0-9\.\-]+)\sby\srelease-manager\son\s([a-zA-Z]+)\s([a-zA-Z]+)\s(\d+)\s((\d\d):(\d\d):(\d\d))\s([a-zA-Z]+)\s(\d\d\d\d)/',
-                $this->snmp->system()->description(), $matches );
+            preg_match('/ExtremeXOS\s\((.+)\)\sversion\s([a-zA-Z0-9\.\-]+\s[a-zA-Z0-9\.\-]+)\sby\srelease-manager\son\s([a-zA-Z]+)\s([a-zA-Z]+)\s(\d+)\s((\d\d):(\d\d):(\d\d))\s([a-zA-Z]+)\s(\d\d\d\d)/',
+                $this->snmp->system()->description(), $matches);
 
             $this->model = $matches[1];
             $this->os_version = $matches[2];
-            $this->os_date = new Carbon( "{$matches[5]}/{$matches[4]}/{$matches[11]}:{$matches[6]} +0000");
-            //$this->model = $this->snmp->extremeXOS()->chassis()->systemModel();
-
+            $this->os_date = new Carbon("{$matches[5]}/{$matches[4]}/{$matches[11]}:{$matches[6]} +0000");
+        //$this->model = $this->snmp->extremeXOS()->chassis()->systemModel();
         } else {
             $this->model = '';
             $this->os_version = '';
@@ -56,7 +55,6 @@ class ExtremeNetworks extends Device implements DeviceContract
     {
         return $this->serial_number;
     }
-
 
     public function vendor(): string
     {
