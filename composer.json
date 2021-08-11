@@ -1,54 +1,43 @@
 {
-    "name": "nicko170/php-snmp",
-    "description": "A PHP Wrapper for SNMP",
-    "keywords": [
-        "nicko170",
-        "php-snmp"
-    ],
-    "homepage": "https://github.com/nicko170/php-snmp",
-    "license": "GPL-2.0-or-later",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Nick Pratley",
-            "email": "nick@npratley.net",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Nicko170\\PhpSnmp\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Nicko170\\PhpSnmp\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Nicko170\\PhpSnmp\\PhpSnmpServiceProvider"
-            ],
-            "aliases": {
-                "PhpSnmp": "Nicko170\\PhpSnmp\\PhpSnmpFacade"
-            }
-        }
+  "name": "nicko170/php-snmp",
+  "description": "A PHP Wrapper for SNMP",
+  "keywords": [
+    "nicko170",
+    "php-snmp"
+  ],
+  "homepage": "https://github.com/nicko170/php-snmp",
+  "license": "GPL-2.0-or-later",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Nick Pratley",
+      "email": "nick@npratley.net",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-snmp": "*"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nicko170\\PhpSnmp\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nicko170\\PhpSnmp\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  }
 }

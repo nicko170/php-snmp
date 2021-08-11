@@ -1,10 +1,10 @@
-# Very short description of the package
+# PHP SNMP - A fluent interface to SNMP network devices
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nicko170/php-snmp.svg?style=flat-square)](https://packagist.org/packages/nicko170/php-snmp)
 [![Total Downloads](https://img.shields.io/packagist/dt/nicko170/php-snmp.svg?style=flat-square)](https://packagist.org/packages/nicko170/php-snmp)
 ![GitHub Actions](https://github.com/nicko170/php-snmp/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+
 
 ## Installation
 
@@ -17,7 +17,10 @@ composer require nicko170/php-snmp
 ## Usage
 
 ```php
-// Usage description here
+use Nicko170\PhpSnmp\SNMP;
+
+$device = new SNMP(host: '103.2.119.110', community: 'public', version: '2c');
+$device->system()->name();
 ```
 
 ### Testing
@@ -46,7 +49,3 @@ If you discover any security related issues, please email nick@npratley.net inst
 ## License
 
 The GNU GPLv3. Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).

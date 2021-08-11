@@ -9,9 +9,16 @@
  *
  */
 
-/*
- * You can place your custom package configuration in here.
- */
-return [
+namespace Nicko170\PhpSnmp\MIBS;
 
-];
+use Nicko170\PhpSnmp\SNMP;
+
+abstract class Base {
+    protected SNMP $snmp;
+
+    public function __construct(SNMP $snmp)
+    {
+        $this->snmp = $snmp;
+    }
+
+}
