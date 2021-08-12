@@ -31,60 +31,70 @@ class Iface
     public function ifIndex(int $ifIndex): self
     {
         $this->ifIndex = $ifIndex;
+
         return $this;
     }
 
     public function alias(?string $alias): self
     {
         $this->alias = $alias;
+
         return $this;
     }
 
     public function description(?string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
 
     public function name(?string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
     public function type(?string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
     public function mtu(?int $mtu): self
     {
         $this->mtu = $mtu;
+
         return $this;
     }
 
-    public function speed(?int $speed) : self
+    public function speed(?int $speed): self
     {
         $this->speed = $speed;
+
         return $this;
     }
 
-    public function physAddress(?string $physAddress) : self
+    public function physAddress(?string $physAddress): self
     {
         $this->physAddress = $physAddress;
+
         return $this;
     }
 
-    public function admin(?int $admin) : self
+    public function admin(?int $admin): self
     {
         $this->admin = $admin;
+
         return $this;
     }
 
-    public function oper(?int $oper) : self
+    public function oper(?int $oper): self
     {
         $this->oper = $oper;
+
         return $this;
     }
 }

@@ -13,8 +13,8 @@ namespace Nicko170\PhpSnmp;
 use Exception;
 use Nicko170\PhpSnmp\Contracts\DeviceContract;
 use Nicko170\PhpSnmp\Contracts\SNMPCache;
-use Nicko170\PhpSnmp\Models\ExtremeNetworks;
 use Nicko170\PhpSnmp\MIBS\HasMIBS;
+use Nicko170\PhpSnmp\Models\ExtremeNetworks;
 
 class SNMP
 {
@@ -40,7 +40,7 @@ class SNMP
      */
     public function __construct(string $host = '127.0.0.1', string $community = 'public', string $version = '2c', int $retry = 5, SNMPCache $cache = null)
     {
-        if (!function_exists('snmp2_get')) {
+        if (! function_exists('snmp2_get')) {
             throw new Exception('You need to install the PHP SNMP package.');
         }
 
@@ -72,14 +72,14 @@ class SNMP
 
         $parsed = $this->parse($result);
         $this->cache->set($oid, $parsed);
+
         return $parsed;
     }
-
 
     /**
      * @throws Exception
      */
-    public function walk(string $oid): array|false
+    public function walk(string $oid): array | false
     {
         if ($result = $this->cache->get($oid)) {
             return $result;
@@ -91,8 +91,9 @@ class SNMP
             default => throw new Exception('SNMP v3 has not been implemented yet.')
         };
 
-        array_walk($result, fn(&$val) => $val = $this->parse($val));
+        array_walk($result, fn (&$val) => $val = $this->parse($val));
         $this->cache->set($oid, $result);
+
         return $result;
     }
 
@@ -105,9 +106,9 @@ class SNMP
      * @return string|int|bool|null
      * @throws Exception
      */
-    public function parse(string $result): string|int|bool|null
+    public function parse(string $result): string | int | bool | null
     {
-        if (empty(trim($result, "\""))) {
+        if (empty(trim($result, '"'))) {
             return '';
         }
 
@@ -115,7 +116,7 @@ class SNMP
         $value = trim(substr($result, strpos($result, ':') + 1));
 
         if ($type === 'INTEGER') {
-            if (!is_numeric($value)) {
+            if (! is_numeric($value)) {
                 preg_match('/\d/', $value, $m, PREG_OFFSET_CAPTURE);
                 $value = (int) substr($value, $m[0][1]);
             }
@@ -123,8 +124,8 @@ class SNMP
 
         return match ($type) {
             'STRING', 'OID', 'IpAddress', 'INTEGER' => $value,
-            'Timeticks' => (int)substr($value, 1, strrpos($value, ')') - 1),
-            'Counter32', 'Counter64', 'Gauge32' => (int)$value,
+            'Timeticks' => (int) substr($value, 1, strrpos($value, ')') - 1),
+            'Counter32', 'Counter64', 'Gauge32' => (int) $value,
             default => throw new Exception("Not implemented: [$type: $value]")
         };
     }
