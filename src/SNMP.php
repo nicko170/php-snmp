@@ -95,7 +95,7 @@ class SNMP
         $value = trim(substr($result, strpos($result, ':') + 1));
 
         return match ($type) {
-            'STRING', 'OID', 'IpAddress' => trim($value, "\""),
+            'STRING', 'OID', 'IpAddress' => trim($value, '"'),
             'INTEGER' => is_numeric($value) ? (int) $value : null,
             'Timeticks' => (int) substr($value, 1, strrpos($value, ')') - 1),
             'Counter32', 'Counter64', 'Gauge32' => (int) $value,
