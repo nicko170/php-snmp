@@ -67,7 +67,7 @@ class SNMP
         $result = match ($this->version) {
             '1' => @snmpget($this->host, $this->community, $oid, $this->timeout, $this->retry),
             '2c' => @snmp2_get($this->host, $this->community, $oid, $this->timeout, $this->retry),
-            default => throw new Exception('lol no')
+            default => throw new Exception('SNMP v3 has not been implemented yet.')
         };
 
         $parsed = $this->parse($result);
@@ -95,7 +95,7 @@ class SNMP
         $value = trim(substr($result, strpos($result, ':') + 1));
 
         return match ($type) {
-            'STRING', 'OID', 'IpAddress' => $value,
+            'STRING', 'OID', 'IpAddress' => trim($value, "\""),
             'INTEGER' => is_numeric($value) ? (int) $value : null,
             'Timeticks' => (int) substr($value, 1, strrpos($value, ')') - 1),
             'Counter32', 'Counter64', 'Gauge32' => (int) $value,
