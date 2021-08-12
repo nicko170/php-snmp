@@ -1,6 +1,6 @@
 <?php
 
-namespace Nicko170\PhpSnmp\Device;
+namespace Nicko170\PhpSnmp\Models;
 
 use Nicko170\PhpSnmp\SNMP;
 

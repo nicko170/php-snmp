@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2021 - 2021 Nick Pratley - (https://devlan.io)
  */
 
-namespace Nicko170\PhpSnmp\Device;
+namespace Nicko170\PhpSnmp\Models;
 
 use Carbon\Carbon;
 use JetBrains\PhpStorm\Pure;

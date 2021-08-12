@@ -11,6 +11,7 @@
 namespace Nicko170\PhpSnmp\MIBS;
 
 use Nicko170\PhpSnmp\MIBS\ExtremeXOS\ExtremeXOS;
+use Nicko170\PhpSnmp\MIBS\Generic\Iface;
 
 trait HasMIBS
 {
@@ -23,6 +24,15 @@ trait HasMIBS
         }
 
         return $this->mibs['system'] = new System($this);
+    }
+
+    public function iface(): Iface
+    {
+        if (array_key_exists('iface', $this->mibs) && $this->mibs['iface'] instanceof Iface) {
+            return $this->mibs['iface'];
+        }
+
+        return $this->mibs['iface'] = new Iface($this);
     }
 
     public function extremeXOS(): ExtremeXOS
