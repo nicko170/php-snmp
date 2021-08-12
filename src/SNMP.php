@@ -76,6 +76,9 @@ class SNMP
     }
 
 
+    /**
+     * @throws Exception
+     */
     public function walk(string $oid): array|false
     {
         if ($result = $this->cache->get($oid)) {
@@ -136,6 +139,6 @@ class SNMP
             return new ExtremeNetworks($this);
         }
 
-        throw new Exception('Vendor not implimented');
+        throw new Exception('Vendor not implemented');
     }
 }
