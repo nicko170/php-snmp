@@ -2,6 +2,10 @@
 
 All notable changes to `php-snmp` will be documented in this file
 
+
+## dev-main
+* Fixed bug with extra \" being returned
+
 ## 0.1.2 - 2021-08-12
 
 * Added SNMP walk support
