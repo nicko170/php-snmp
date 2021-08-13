@@ -15,7 +15,7 @@ class Iface
     public int $ifIndex;
     public ?string $description;
     public ?string $name;
-    public ?string $type;
+    public ?int $type;
     public ?int $mtu;
     public ?int $speed;
     public ?string $physAddress;
@@ -56,7 +56,7 @@ class Iface
         return $this;
     }
 
-    public function type(?string $type): self
+    public function type(?int $type): self
     {
         $this->type = $type;
 
