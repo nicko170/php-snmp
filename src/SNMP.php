@@ -113,7 +113,7 @@ class SNMP
         }
 
         $type = substr($result, 0, strpos($result, ':'));
-        $value = trim(substr($result, strpos($result, ':') + 1));
+        $value = trim(trim(substr($result, strpos($result, ':') + 1)), '"');
 
         if ($type === 'INTEGER') {
             if (! is_numeric($value)) {
