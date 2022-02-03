@@ -3,8 +3,10 @@
  * PHP SNMP - A fluent interface to SNMP network devices.
  *
  * @link      https://github.com/nicko170/php-snmp
+ *
  * @author    Nick Pratley <nick@npratley.net>
  * @licence   https://github.com/nicko170/php-snmp/blob/main/LICENSE.md
+ *
  * @copyright Copyright (c) 2021 - 2021 Nick Pratley - (https://devlan.io)
  */
 
@@ -276,54 +278,55 @@ class Iface extends Base
      * Text representation of interface operating status.
      *
      * @see operationStates()
+     *
      * @var array Text representations of interface operating status.
      */
-    public function indexes(): array | false
+    public function indexes(): array|false
     {
         return $this->snmp->walk(self::OID_IF_INDEX);
     }
 
-    public function descriptions(): array | false
+    public function descriptions(): array|false
     {
         return $this->snmp->walk(self::OID_IF_DESCRIPTION);
     }
 
-    public function types(): array | false
+    public function types(): array|false
     {
         return $this->snmp->walk(self::OID_IF_TYPE);
     }
 
-    public function mtus(): array | false
+    public function mtus(): array|false
     {
         return $this->snmp->walk(self::OID_IF_MTU);
     }
 
-    public function speeds(): array | false
+    public function speeds(): array|false
     {
         return $this->snmp->walk(self::OID_IF_SPEED);
     }
 
-    public function physAddresses(): array | false
+    public function physAddresses(): array|false
     {
         return $this->snmp->walk(self::OID_IF_PHYS_ADDRESS);
     }
 
-    public function admins(): array | false
+    public function admins(): array|false
     {
         return $this->snmp->walk(self::OID_IF_ADMIN_STATUS);
     }
 
-    public function opers(): array | false
+    public function opers(): array|false
     {
         return $this->snmp->walk(self::OID_IF_OPER_STATUS);
     }
 
-    public function names(): array | false
+    public function names(): array|false
     {
         return $this->snmp->walk(self::OID_IF_NAME);
     }
 
-    public function aliases(): array | false
+    public function aliases(): array|false
     {
         return $this->snmp->walk(self::OID_IF_ALIAS);
     }

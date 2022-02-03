@@ -3,8 +3,10 @@
  * PHP SNMP - A fluent interface to SNMP network devices.
  *
  * @link      https://github.com/nicko170/php-snmp
+ *
  * @author    Nick Pratley <nick@npratley.net>
  * @licence   https://github.com/nicko170/php-snmp/blob/main/LICENSE.md
+ *
  * @copyright Copyright (c) 2021 - 2021 Nick Pratley - (https://devlan.io)
  */
 
@@ -15,9 +17,9 @@ interface SNMPCache
     /**
      * Ads an Item to the Cache, with an optional expiry time.
      *
-     * @param string $key
-     * @param mixed $value
-     * @param int|null $timeout
+     * @param  string  $key
+     * @param  mixed  $value
+     * @param  int|null  $timeout
      * @return bool If adding to the cache was successful
      */
     public function set(string $key, mixed $value, ?int $timeout = null): bool;
@@ -25,7 +27,7 @@ interface SNMPCache
     /**
      * Returns true if key exists in cache, and is not expired.
      *
-     * @param string $key
+     * @param  string  $key
      * @return bool
      */
     public function exists(string $key): bool;
