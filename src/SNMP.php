@@ -3,8 +3,10 @@
  * PHP SNMP - A fluent interface to SNMP network devices.
  *
  * @link      https://github.com/nicko170/php-snmp
+ *
  * @author    Nick Pratley <nick@npratley.net>
  * @licence   https://github.com/nicko170/php-snmp/blob/main/LICENSE.md
+ *
  * @copyright Copyright (c) 2021 - 2021 Nick Pratley - (https://devlan.io)
  */
 
@@ -32,10 +34,11 @@ class SNMP
     /**
      * Constructor.
      *
-     * @param string $host The target host IP address
-     * @param string $community The SNMP community
-     * @param string $version The SNMP version
+     * @param  string  $host  The target host IP address
+     * @param  string  $community  The SNMP community
+     * @param  string  $version  The SNMP version
      * @return SNMP
+     *
      * @throws Exception
      */
     public function __construct(string $host = '127.0.0.1', string $community = 'public', string $version = '2c', int $retry = 5, SNMPCache $cache = null)
@@ -79,7 +82,7 @@ class SNMP
     /**
      * @throws Exception
      */
-    public function walk(string $oid): array | false
+    public function walk(string $oid): array|false
     {
         if ($result = $this->cache->get($oid)) {
             return $result;
@@ -102,11 +105,12 @@ class SNMP
      * eg, [STRING: "ASDF"] => string "ASDF";
      * or, [INTEGER: 11] => int 11;.
      *
-     * @param string $result
+     * @param  string  $result
      * @return string|int|bool|null
+     *
      * @throws Exception
      */
-    public function parse(string $result): string | int | bool | null
+    public function parse(string $result): string|int|bool|null
     {
         if (empty(trim($result, '"'))) {
             return '';
