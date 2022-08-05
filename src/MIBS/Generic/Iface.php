@@ -25,6 +25,19 @@ class Iface extends Base
     const OID_IF_ADMIN_STATUS = '.1.3.6.1.2.1.2.2.1.7';
     const OID_IF_OPER_STATUS = '.1.3.6.1.2.1.2.2.1.8';
 
+    const OID_IF_IN_OCTETS = '.1.3.6.1.2.1.2.2.1.10';
+    const OID_IF_IN_UCAST_PKTS = '.1.3.6.1.2.1.2.2.1.11';
+    const OID_IF_IN_NUCAST_PKTS = '.1.3.6.1.2.1.2.2.1.12';
+    const OID_IF_IN_DISCARDS = '.1.3.6.1.2.1.2.2.1.13';
+    const OID_IF_IN_ERRORS = '.1.3.6.1.2.1.2.2.1.14';
+    const OID_IF_IN_UNKNOWN_PROTOS = '.1.3.6.1.2.1.2.2.1.15';
+
+    const OID_IF_OUT_OCTETS = '.1.3.6.1.2.1.2.2.1.16';
+    const OID_IF_OUT_UCAST_PKTS = '.1.3.6.1.2.1.2.2.1.17';
+    const OID_IF_OUT_NUCAST_PKTS = '.1.3.6.1.2.1.2.2.1.18';
+    const OID_IF_OUT_DISCARDS = '.1.3.6.1.2.1.2.2.1.19';
+    const OID_IF_OUT_ERRORS = '.1.3.6.1.2.1.2.2.1.20';
+
     const OID_IF_NAME = '.1.3.6.1.2.1.31.1.1.1.1';
     const OID_IF_ALIAS = '.1.3.6.1.2.1.31.1.1.1.18';
 
@@ -350,5 +363,21 @@ class Iface extends Base
 
             array_values($this->indexes())
         );
+    }
+
+    public function stats(int $index): \Nicko170\PhpSnmp\Models\Iface
+    {
+        return (new \Nicko170\PhpSnmp\Models\Iface($index))
+            ->inOctets($this->snmp->get(self::OID_IF_IN_OCTETS.'.'.$index))
+            ->inUcastPkts($this->snmp->get(self::OID_IF_IN_UCAST_PKTS.'.'.$index))
+            ->inNUcastPkts($this->snmp->get(self::OID_IF_IN_NUCAST_PKTS.'.'.$index))
+            ->inDiscards($this->snmp->get(self::OID_IF_IN_DISCARDS.'.'.$index))
+            ->inErrors($this->snmp->get(self::OID_IF_IN_ERRORS.'.'.$index))
+            ->inUnknownProtos($this->snmp->get(self::OID_IF_IN_UNKNOWN_PROTOS.'.'.$index))
+            ->outOctets($this->snmp->get(self::OID_IF_OUT_OCTETS.'.'.$index))
+            ->outUcastPkts($this->snmp->get(self::OID_IF_OUT_UCAST_PKTS.'.'.$index))
+            ->outNUcastPkts($this->snmp->get(self::OID_IF_OUT_NUCAST_PKTS.'.'.$index))
+            ->outDiscards($this->snmp->get(self::OID_IF_OUT_DISCARDS.'.'.$index))
+            ->outErrors($this->snmp->get(self::OID_IF_OUT_ERRORS.'.'.$index));
     }
 }

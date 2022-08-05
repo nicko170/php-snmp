@@ -25,6 +25,18 @@ class Iface
     public ?int $oper;
     public ?string $alias;
 
+    public ?int $inOctets;
+    public ?int $inUcastPkts;
+    public ?int $inNUcastPkts;
+    public ?int $inDiscards;
+    public ?int $inErrors;
+    public ?int $inUnknownProtos;
+    public ?int $outOctets;
+    public ?int $outUcastPkts;
+    public ?int $outNUcastPkts;
+    public ?int $outDiscards;
+    public ?int $outErrors;
+
     public function __construct(int $ifIndex)
     {
         $this->ifIndex($ifIndex);
@@ -99,4 +111,82 @@ class Iface
 
         return $this;
     }
+
+    public function inOctets(?int $inOctets): self
+    {
+        $this->inOctets = $inOctets;
+
+        return $this;
+    }
+
+    public function inUcastPkts(?int $inUcastPkts): self
+    {
+        $this->inUcastPkts = $inUcastPkts;
+
+        return $this;
+    }
+
+    public function inNUcastPkts(?int $inNUcastPkts): self
+    {
+        $this->inNUcastPkts = $inNUcastPkts;
+
+        return $this;
+    }
+
+    public function inDiscards(?int $inDiscards): self
+    {
+        $this->inDiscards = $inDiscards;
+
+        return $this;
+    }
+
+    public function inErrors(?int $inErrors): self
+    {
+        $this->inErrors = $inErrors;
+
+        return $this;
+    }
+
+    public function inUnknownProtos(?int $inUnknownProtos): self
+    {
+        $this->inUnknownProtos = $inUnknownProtos;
+
+        return $this;
+    }
+
+    public function outOctets(?int $outOctets): self
+    {
+        $this->outOctets = $outOctets;
+
+        return $this;
+    }
+
+    public function outUcastPkts(?int $outUcastPkts): self
+    {
+        $this->outUcastPkts = $outUcastPkts;
+
+        return $this;
+    }
+
+    public function outNUcastPkts(?int $outNUcastPkts): self
+    {
+        $this->outNUcastPkts = $outNUcastPkts;
+
+        return $this;
+    }
+
+    public function outDiscards(?int $outDiscards): self
+    {
+        $this->outDiscards = $outDiscards;
+
+        return $this;
+    }
+
+    public function outErrors(?int $outErrors): self
+    {
+        $this->outErrors = $outErrors;
+
+        return $this;
+    }
+
 }
